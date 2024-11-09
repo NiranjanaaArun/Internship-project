@@ -7,7 +7,7 @@ from time import sleep
 
 class MainPage(Page):
 
-    OFFPLAN= (By.CSS_SELECTOR, 'address.menu-twobutton')
+    OFFPLAN= (By.CSS_SELECTOR, "[class='menu-twobutton']")
     OFFPLAN_TITLE= (By.CSS_SELECTOR, "[class*='page-title off_plan']")
     NEXT_PAGE = (By.CSS_SELECTOR, "a[wized='nextPageProperties']")
     PREVIOUS_PAGE = (By.CSS_SELECTOR, "div[wized='previousPageProperties']")
