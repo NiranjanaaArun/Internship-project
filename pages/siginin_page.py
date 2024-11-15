@@ -13,8 +13,8 @@ class SigninPage(Page):
         sleep(6)
 
     def valid_credentials(self):
-        self.input_text('', *self.EMAIL_FIELD)
-        self.input_text('', *self.PASSWORD_FIELD)
+        self.input_text('niranjanaa.anand@gmail.com', *self.EMAIL_FIELD)
+        self.input_text('Watsup123!', *self.PASSWORD_FIELD)
         sleep(5)
         self.click(*self.SIGN_IN)
         sleep(6)
