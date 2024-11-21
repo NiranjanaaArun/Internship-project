@@ -20,10 +20,11 @@ class MainPage(Page):
 
     def verify_title(self):
         self.wait_until_appears(*self.OFFPLAN_TITLE)
-        self.scroll()
+        #self.driver.find_element("targetElement").scrollIntoView();
         sleep(2)
 
     def next_page(self):
+        self.scroll()
         while True:
                 current_page_element = self.find_element(*self.CURRENT_PAGE)
                 total_page_element = self.find_element(*self.TOTAL_PAGES)
@@ -44,6 +45,7 @@ class MainPage(Page):
                 if current_page_number == 1:
                     print("Reached first page")
                     break
+                self.scroll()
                 self.find_element(*self.PREVIOUS_PAGE).click()
                 sleep(2)
 

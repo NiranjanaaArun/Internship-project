@@ -56,7 +56,8 @@ class Page:
         return self.driver.current_window_handle
 
     def scroll(self):
-        self.driver.execute_script("window.scrollBy(0, 1500)")
+        self.driver.execute_script("window.scrollBy(0, 10000)")
+        #self.driver.find_element("targetElement").scrollIntoView();
 
     def switch_to_new_window(self):
         self.wait.until(EC.new_window_is_opened)

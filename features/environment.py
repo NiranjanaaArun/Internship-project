@@ -8,12 +8,17 @@ from app.application import Application
 from selenium.webdriver.support.wait import WebDriverWait
 
 def browser_init(context,scenario_name):
-    """
-    :param context: Behave context
-    """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    # """
+    # :param context: Behave context
+    # """
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
+    #
+    # context.driver.maximize_window()
+    # context.driver.implicitly_wait(4)
+    # # context.driver.wait = WebDriverWait(context.driver, 10)
+    # context.app = Application(context.driver)
 
     #-------------Run Browser on Firefox----------------
     # driver_path = GeckoDriverManager().install()
@@ -43,9 +48,26 @@ def browser_init(context,scenario_name):
     # options.set_capability('bstack:options', bstack_options)
     # context.driver = webdriver.Remote(command_executor=url, options=options)
 
+
+    #------------------------------Allure Report------------------------------------
+    #Command line on the terminal : behave -f allure_behave.formatter:AllureFormatter -o test_results ./features/tests/reely_main_page.feature
+    #allure serve test_results
+
+    # ---------------------------------Mobile emulation---------------------------------------
+    mobile_emulation = {
+        "deviceName": "Pixel 2"  # Choose a mobile device
+    }
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # Initialize WebDriver with mobile emulation
+    service = Service(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(service=service, options=options)
+
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
+    context.driver.wait = WebDriverWait(context.driver, 10)
     context.app = Application(context.driver)
+
 
 
 def before_scenario(context, scenario):
